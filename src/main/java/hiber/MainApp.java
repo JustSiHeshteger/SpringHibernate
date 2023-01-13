@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class MainApp {
    public static void main(String[] args) throws SQLException {
@@ -38,6 +39,18 @@ public class MainApp {
          System.out.println("Email = "+user.getEmail());
          System.out.println("Car = "+user.getCar());
          System.out.println();
+      }
+
+      Optional<Object> user = userService.getUserByCar("Tesla", 3);
+
+      if (user.isPresent()) {
+         User usr = (User) user.get();
+
+         System.out.println("Id = "+usr.getId());
+         System.out.println("First Name = "+usr.getFirstName());
+         System.out.println("Last Name = "+usr.getLastName());
+         System.out.println("Email = "+usr.getEmail());
+         System.out.println("Car = "+usr.getCar());
       }
 
       context.close();
