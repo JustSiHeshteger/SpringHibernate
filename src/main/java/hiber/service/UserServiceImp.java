@@ -30,6 +30,6 @@ public class UserServiceImp implements UserService {
    @Transactional
    @Override
    public Optional<Object> getUserByCar(String model, int series) {
-      return Optional.of(userDao.getUserByCar(model, series));
+      return userDao.getUserByCar(model, series);
    }
 }
